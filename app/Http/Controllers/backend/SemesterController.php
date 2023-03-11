@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\semesters;
 use App\Models\subjects;
+use App\Models\notices;
 use Illuminate\Http\Request;
 
 class SemesterController extends BackendBaseController
@@ -34,6 +35,14 @@ class SemesterController extends BackendBaseController
 //        $data['rows'] = ->get();
         return view($this->__loadDataToView($this->view . 'index'),compact('data'));
     }
+    public function showAll(Request $request){
+        $data = semesters::all();
+        return $data;
+    }
+    public function showAllNotices(Request $request){
+        $data = notices::all();
+        return $data;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -55,8 +64,7 @@ class SemesterController extends BackendBaseController
      */
     public function store(Request $request)
     {
-//        dd($request->all());
-//        $request->request->add(['created_by' => auth()->user()->id]);
+
         $data['row']=$this->model->create($request->all());
         if ($data['row']){
             request()->session()->flash('success',$this->panel . 'Created Successfully');

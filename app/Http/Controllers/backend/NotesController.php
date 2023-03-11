@@ -57,6 +57,13 @@ class NotesController extends BackendBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function uploadimage(Request $request)
+    {
+        $image = $request->file('upload');
+        $imageData = base64_encode(file_get_contents($image->getRealPath()));
+        $url = 'data:'.$image->getClientMimeType().';base64,'.$imageData;
+        return response()->json(['fileName' => $image->getClientOriginalName(), 'uploaded' => 1, 'url' => $url]);
+    }
     public function store(Request $request)
     {
 //        dd($request->all());
@@ -77,7 +84,14 @@ class NotesController extends BackendBaseController
         return redirect()->route($this->__loadDataToView($this->route . 'index'));
 
     }
-
+    public function showAll(Request $request, $id){
+        $data = notes::where('chapter_id', $id)->with('Chapter')->with('Semester')->with('Subject')->get();
+        if (count($data) > 0) {
+            return response()->json($data[0]);
+        } else {
+            return response()->json([]);
+        }
+    }
     /**
      * Display the specified resource.
      *

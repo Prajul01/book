@@ -10,4 +10,9 @@ class semesters extends Model
     use HasFactory;
     protected $table='semesters';
     protected $fillable=['name'];
+    
+
+    function  subjects(){
+        return $this->hasMany(subjects::class);
+    }
 }
