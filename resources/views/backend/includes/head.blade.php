@@ -8,6 +8,8 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{{ asset('node_modules/@ckeditor/ckeditor5-build-decoupled-document/theme.css') }}">
+
     <!-- Font Awesome -->
 
     <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
@@ -31,12 +33,12 @@
           integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- summernote -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.min.css')}}">
     <script type="text/javascript">
         $(document).ready(function() {
             $('.ckeditor').ckeditor();
         });
     </script>
-    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> -->
 
 </head>

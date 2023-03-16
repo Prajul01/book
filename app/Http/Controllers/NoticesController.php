@@ -23,6 +23,10 @@ class NoticesController extends BackendBaseController
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
+    public function showAll(Request $request){
+        $data = notices::all();
+        return $data;
+    }
     public function index()
     {
         $this->title = 'List';
@@ -52,8 +56,6 @@ class NoticesController extends BackendBaseController
      */
     public function store(Request $request)
     {
-//        dd($request->all());
-//        $request->request->add(['created_by' => auth()->user()->id]);
         $data['row']=$this->model->create($request->all());
         if ($data['row']){
             request()->session()->flash('success',$this->panel . 'Created Successfully');
@@ -64,7 +66,7 @@ class NoticesController extends BackendBaseController
         return redirect()->route($this->__loadDataToView($this->route . 'index'));
 
     }
-
+    
     /**
      * Display the specified resource.
      *
